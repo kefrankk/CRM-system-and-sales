@@ -3,10 +3,10 @@ from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt
 from datetime import datetime
 from enum import Enum
 
-class CategoryEnum(str, Enum):
-    category1 = "Category 1"
-    category2 = "Category 2"
-    category3 = "Category 3"
+class ProductEnum(str, Enum):
+    product1 = "Product 1"
+    product2 = "Product 2"
+    product3 = "Product 3"
 
 
 
@@ -25,5 +25,5 @@ class Sales(BaseModel):
     email: EmailStr
     date: datetime 
     value: PositiveFloat
-    n_products: PositiveInt
-    category: CategoryEnum
+    quantity: PositiveInt
+    product: ProductEnum
