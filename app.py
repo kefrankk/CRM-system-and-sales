@@ -28,7 +28,7 @@ def main():
                     product = product
                 )
             
-
+            save_postgres(sale)
 
         except ValidationError as e:
             st.error(f"Error {e}")
