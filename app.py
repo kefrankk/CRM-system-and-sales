@@ -6,7 +6,15 @@ from pydantic import ValidationError
 from database import save_postgres
 
 def main():
+    """
+    Main function for the CRM System.
 
+    This function creates a Streamlit app for registering sales.
+    It prompts the user for the seller's email, date of sale, time of sale, value of sale, number of products sold, and product sold.
+    It then creates a Sales object with the given data and saves it to the database using save_postgres.
+    If any of the inputs are invalid, it shows an error message with the validation error.
+    """
+    
     st.title("CRM System")
 
     email       = st.text_input("Seller's Email")
@@ -32,7 +40,6 @@ def main():
 
         except ValidationError as e:
             st.error(f"Error {e}")
-
         
 
 if __name__ == "__main__":

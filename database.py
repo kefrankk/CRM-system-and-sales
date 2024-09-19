@@ -18,6 +18,16 @@ engine = create_engine(DATABASE_URL)
 
 
 def check_table_exists(table_name):
+    """
+    Check if a table exists in the database.
+    
+    Args:
+        table_name (str): The name of the table to check.
+    
+    Returns
+    -------
+        bool: True if the table exists, False otherwise.
+    """
     inspector = inspect(engine)
     tables = inspector.get_table_names()
     return table_name in tables
@@ -25,11 +35,20 @@ def check_table_exists(table_name):
 
 
 def save_postgres(data):
+    """
+    Saves the given data to the database.
 
+    If the table 'sales' does not exist, it will be created.
+
+    Args:
+        data (Sales): The data to be saved.
+    """
     with engine.connect() as connection:
+        # Check if the table 'sales' exists
         if check_table_exists('sales'):
             print("A tabela 'sales' existe.")
         else:
+            # Create the table 'sales' if it does not exist
             create_table_query = '''
                 CREATE TABLE IF NOT EXISTS sales (
                     id SERIAL PRIMARY KEY,
@@ -44,6 +63,7 @@ def save_postgres(data):
             st.write("Tabela criada com sucesso!")
 
 
+        # Insert the data into the table 'sales'
         insert_query = text(
             "INSERT INTO sales (email, date, value, quantity, product) VALUES (:email, :date, :value, :quantity, :product)"
         )
@@ -56,11 +76,9 @@ def save_postgres(data):
                        } ) 
         st.write("Data saved successfully to the database!")
 
+        # Commit the changes
         connection.commit()
 
-        result = connection.execute(text("SELECT * FROM sales"))
-        data = result.fetchall()
-        for row in data:
-            st.write(row)
+
 
 
