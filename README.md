@@ -2,7 +2,7 @@
 
 
 
-I developed a **Simple CRM System** with **Streamlit** to record and manage sales. The system allows users to easily input essential sales information such as:
+I developed a **Simple CRM System** in Python with **Streamlit** to record and manage sales. The system allows users to easily input essential sales information such as:
 
 - 📨 Seller's email
 - 📅 Date and time of sale
