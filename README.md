@@ -97,3 +97,9 @@ http://127.0.0.1:8888/?token=<your_token_here>
 ```
 
 Copy and paste this link into your web browser to access the Jupyter Notebook.
+
+
+
+
+ ## The Streamlit Application	
+![imagem](./crm-system-streamlit.png)
